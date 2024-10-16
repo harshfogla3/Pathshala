@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Pathshala Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .error {
+            color: red;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+        <div class="row w-100">
+            <div class="col-md-4 offset-md-4">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">E-Pathshala Login</h3>
+                        <form id="loginForm">
+                            <!-- Email Input -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                                <div id="email-error" class="error"></div>
+                            </div>
+
+                            <!-- Password Input -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                                <div id="password-error" class="error"></div>
+                            </div>
+
+                            <!-- Login Button -->
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+
+                            <!-- Links for Forgot Password and Create New User -->
+                            <div class="d-flex justify-content-between">
+                                <a href="forgot-password.html">Forgot Password?</a>
+                                <a href="Registration.html">Create New User</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for login validation -->
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const emailError = document.getElementById('email-error');
+            const passwordError = document.getElementById('password-error');
+
+            // Clear previous error messages
+            emailError.textContent = '';
+            passwordError.textContent = '';
+
+            // Basic validation (you can replace this with actual authentication later)
+            let isValid = true;
+
+            if (!email.includes('@')) {
+                emailError.textContent = 'Please enter a valid email.';
+                isValid = false;
+            }
+
+            if (password.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters long.';
+                isValid = false;
+            }
+
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission if there are validation errors
+            } else {
+                // Simulate login success and redirect (you can integrate actual authentication later)
+                event.preventDefault(); // Prevent default for demonstration
+                alert('Login successful! Redirecting to dashboard...');
+                window.location.href = 'Dashboard.html'; // Redirect after successful login
+            }
+        });
+    </script>
+
+</body>
+</html>
